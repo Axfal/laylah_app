@@ -43,11 +43,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final List<Widget> screens = [
       DiscoverScreen(),
       LibraryScreen(),
-      bookDetailProvider.bookDetail!.data!.isEmpty
-          ? SplashWritingScreen()
-          : AuthorCenterScreen(),
+      (bookDetailProvider.bookDetail != null &&
+          bookDetailProvider.bookDetail!.data != null &&
+          bookDetailProvider.bookDetail!.data!.isNotEmpty)
+          ? AuthorCenterScreen()
+          : SplashWritingScreen(),
       ProfileScreen(),
     ];
+
 
     return Scaffold(
       body: Consumer<BottomNavigationProvider>(

@@ -14,15 +14,13 @@ class LibraryBooksProvider with ChangeNotifier {
   GetLibraryBookModel? _getLibraryBookModel;
   GetLibraryBookModel? get getLibraryModel => _getLibraryBookModel;
 
-
   final Set<int> _loadingBooks = {};
   bool isBookLoading(int bookId) => _loadingBooks.contains(bookId);
 
-
   bool inLibrary(int bookId) {
-    return _getLibraryBookModel?.books?.any((book) => book.bookId == bookId) ?? false;
+    return _getLibraryBookModel?.books?.any((book) => book.bookId == bookId) ??
+        false;
   }
-
 
   /// get library books
   Future<void> getLibraryBooks() async {
@@ -52,7 +50,7 @@ class LibraryBooksProvider with ChangeNotifier {
   }
 
   Future<void> addBookToLibrary(context, int bookId) async {
-    _loadingBooks.add(bookId); // <-- Start loading
+    _loadingBooks.add(bookId);
     notifyListeners();
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -61,16 +59,13 @@ class LibraryBooksProvider with ChangeNotifier {
     if (userId != null) {
       try {
         Map<String, dynamic> data = {"user_id": userId, "book_id": bookId};
+        print("book id: $bookId and user id: $userId");
         final response = await _libraryServices.addLibraryBook(data);
         if (response != null && response["status"] == "success") {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text("${response["message"] ?? "Book added to library"}"),
-              backgroundColor: Colors.green));
+          ToastHelper.showSuccess("${response["message"]}");
           await getLibraryBooks();
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text("${response?["message"] ?? "Error occurred"}"),
-              backgroundColor: Colors.red));
+          ToastHelper.showError("${response?['message']}");
         }
       } catch (e) {
         print("error while adding book : $e");
