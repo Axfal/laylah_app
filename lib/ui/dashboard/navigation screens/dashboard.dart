@@ -44,13 +44,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
       DiscoverScreen(),
       LibraryScreen(),
       (bookDetailProvider.bookDetail != null &&
-          bookDetailProvider.bookDetail!.data != null &&
-          bookDetailProvider.bookDetail!.data!.isNotEmpty)
+              bookDetailProvider.bookDetail!.data != null &&
+              bookDetailProvider.bookDetail!.data!.isNotEmpty)
           ? AuthorCenterScreen()
           : SplashWritingScreen(),
       ProfileScreen(),
     ];
-
 
     return Scaffold(
       body: Consumer<BottomNavigationProvider>(

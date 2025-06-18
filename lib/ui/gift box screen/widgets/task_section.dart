@@ -25,6 +25,7 @@ class TaskSection extends StatelessWidget {
           ),
         ),
         SizedBoxExtensions.withHeight(8),
+
         /// list of daily tasks
         Column(
           children: tasks

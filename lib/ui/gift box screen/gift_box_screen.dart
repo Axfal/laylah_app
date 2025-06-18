@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:laylah_app/ui/gift%20box%20screen/widgets/bonus_coin_row.dart';
 import 'package:laylah_app/ui/gift%20box%20screen/widgets/check_in_section.dart';
@@ -12,7 +14,8 @@ class GiftBoxScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: _buildAppBar(context),
+
       /// main container
       body: Container(
         decoration: const BoxDecoration(
@@ -74,6 +77,7 @@ class GiftBoxScreen extends StatelessWidget {
                 ],
               ),
               SizedBoxExtensions.withHeight(16),
+
               /// bottom text
               const Center(
                 child: Text(
@@ -93,8 +97,13 @@ class GiftBoxScreen extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar() {
+  AppBar _buildAppBar(context) {
     return AppBar(
+      leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white)),
       automaticallyImplyLeading: false,
       backgroundColor: MyAppColors.dullRedColor,
       surfaceTintColor: Colors.transparent,
@@ -106,6 +115,15 @@ class GiftBoxScreen extends StatelessWidget {
           fontWeight: FontWeight.w500,
         ),
       ),
+      actions: [
+        Icon(
+          Icons.help_outline,
+          color: Colors.white,
+        ),
+        SizedBox(
+          width: 18,
+        )
+      ],
     );
   }
 }
