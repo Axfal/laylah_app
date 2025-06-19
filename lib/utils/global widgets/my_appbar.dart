@@ -53,7 +53,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               InkWell(
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const GiftBoxScreen()),
+                    MaterialPageRoute(builder: (context) => const RewardScreen()),
                   );
                 },
                 borderRadius: BorderRadius.circular(50),

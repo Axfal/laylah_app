@@ -55,9 +55,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       actions: [
         InkWell(
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const GiftBoxScreen()),
-            );
+            // Navigator.of(context).push(
+            //   MaterialPageRoute(builder: (context) => const GiftBoxScreen()),
+            // );
           },
           child: Image.asset(
             'assets/icons/gift_box.png',

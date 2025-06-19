@@ -97,12 +97,12 @@ class MyWalletScreen extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => GiftBoxScreen(),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => GiftBoxScreen(),
+                    //   ),
+                    // );
                   },
                   icon: const Icon(Icons.arrow_circle_right, color: MyAppColors.dullRedColor),
                 ),
