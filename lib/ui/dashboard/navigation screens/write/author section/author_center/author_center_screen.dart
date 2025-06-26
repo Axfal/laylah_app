@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:laylah_app/ui/dashboard/navigation%20screens/write/author%20section/drafts%20screen/widgets/drafts_card.dart';
+import 'package:laylah_app/ui/dashboard/navigation%20screens/write/author%20section/income_section/income_screen.dart';
 import 'package:laylah_app/ui/dashboard/navigation%20screens/write/author%20section/novel%20info/widgets/alpha/alpha.dart';
 import 'package:laylah_app/utils/constants/exports.dart';
 import '../novel info/novel_information_screen.dart';
@@ -50,6 +51,18 @@ class _AuthorCenterScreenState extends State<AuthorCenterScreen> {
               },
               icon: Icon(
                 Icons.add,
+                color: Colors.white,
+              )),
+
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => IncomeScreen()));
+              },
+              icon: Icon(
+                Icons.more_vert,
                 color: Colors.white,
               ))
         ],

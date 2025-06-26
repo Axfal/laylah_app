@@ -151,7 +151,7 @@ class RewardScreen extends StatelessWidget {
                   Image.asset('assets/icons/laylah_coins.png', width: 28),
                   SizedBox(height: 4),
                   Text('+15', style: GoogleFonts.poppins(fontSize: 13)),
-                  Text('Day ${index + 1}', style: GoogleFonts.poppins(fontSize: 12)),
+                  Text('Day ${index + 1}', style: GoogleFonts.poppins(fontSize: 8)),
                 ],
               );
             }),
