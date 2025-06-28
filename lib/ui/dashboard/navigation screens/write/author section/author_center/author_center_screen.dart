@@ -53,16 +53,13 @@ class _AuthorCenterScreenState extends State<AuthorCenterScreen> {
                 Icons.add,
                 color: Colors.white,
               )),
-
           IconButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => IncomeScreen()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => IncomeScreen()));
               },
               icon: Icon(
-                Icons.more_vert,
+                Icons.monetization_on,
                 color: Colors.white,
               ))
         ],

@@ -25,6 +25,10 @@ export 'package:laylah_app/services/slides_services.dart';
 export 'package:shimmer/shimmer.dart';
 export 'dart:async';
 export 'package:laylah_app/services/contract_service.dart';
+export 'package:laylah_app/ui/dashboard/navigation%20screens/profile/options/options_list.dart';
+export 'package:laylah_app/utils/constants/exports.dart';
+export 'package:laylah_app/utils/extensions/sized_box_extension.dart';
+
 // export 'package:flutter/cupertino.dart';
 export 'package:laylah_app/services/discover_service.dart';
 export 'package:laylah_app/ui/dashboard/navigation%20screens/discover/widgets/banner/provider/slides_provider.dart';
@@ -38,3 +42,8 @@ export 'package:laylah_app/ui/dashboard/navigation%20screens/write/author%20sect
 export 'package:laylah_app/ui/dashboard/navigation%20screens/library/book%20details%20screen/provider/book_detail_provider.dart';
 export 'package:laylah_app/ui/dashboard/navigation%20screens/write/author%20section/author_center/author_center_screen.dart';
 export 'package:laylah_app/ui/dashboard/navigation%20screens/profile/profile_screen.dart';
+export 'package:laylah_app/ui/dashboard/navigation%20screens/profile/edit_profile_screen.dart';
+export 'package:laylah_app/ui/dashboard/navigation%20screens/profile/profile%20stats/followers_card.dart';
+export 'package:laylah_app/ui/dashboard/navigation%20screens/profile/social%20links/social_links.dart';
+export 'package:laylah_app/ui/dashboard/navigation%20screens/profile/wallet%20section/wallet_section.dart';
+export 'package:laylah_app/ui/dashboard/navigation%20screens/write/provider/author_center_provider.dart';

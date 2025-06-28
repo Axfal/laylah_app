@@ -1,17 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
-
-import 'package:flutter/material.dart';
-import 'package:laylah_app/ui/dashboard/navigation%20screens/profile/edit_profile_screen.dart';
-import 'package:laylah_app/ui/dashboard/navigation%20screens/profile/profile%20stats/followers_card.dart';
-import 'package:laylah_app/ui/dashboard/navigation%20screens/profile/social%20links/social_links.dart';
-import 'package:laylah_app/ui/dashboard/navigation%20screens/profile/wallet%20section/wallet_section.dart';
-import 'package:laylah_app/ui/dashboard/navigation%20screens/write/provider/author_center_provider.dart';
-import '../../../../utils/constants/app_colors.dart';
-import '../../../../utils/constants/exports.dart';
-import '../../../../utils/extensions/sized_box_extension.dart';
-import '../../../auth/login_screen.dart';
-import '../../../gift box screen/gift_box_screen.dart';
-import 'options/options_list.dart';
+import 'package:laylah_app/ui/auth/login_screen.dart';
+import 'package:laylah_app/utils/constants/exports.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -25,7 +14,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyAppColors.whiteColor,
-      appBar: _buildAppBar(context),
+      appBar: MyAppBar(
+        title: "Profile",
+        actions: [
+          InkWell(
+            onTap: () {
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(builder: (context) => const GiftBoxScreen()),
+              // );
+            },
+            child: Image.asset(
+              'assets/icons/gift_box.png',
+              width: 25,
+              height: 25,
+            ),
+          ),
+          SizedBoxExtensions.withWidth(20),
+          IconButton(
+              onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                final authCenterProvider =
+                    Provider.of<AuthorCenterProvider>(context, listen: false);
+                authCenterProvider.clearChaptersForBook();
+                await prefs.remove('user_id');
+                print(
+                    "user_id removed from SharedPreferences and chapter from author center map deleted");
+
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
+              },
+              icon: Icon(
+                Icons.login,
+                color: Colors.white,
+              )),
+          SizedBoxExtensions.withWidth(15),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -37,54 +63,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  /// AppBar
-  AppBar _buildAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: MyAppColors.dullRedColor,
-      surfaceTintColor: Colors.transparent,
-      title: const Text(
-        'Profile',
-        style: TextStyle(
-          color: MyAppColors.whiteColor,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-      actions: [
-        InkWell(
-          onTap: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(builder: (context) => const GiftBoxScreen()),
-            // );
-          },
-          child: Image.asset(
-            'assets/icons/gift_box.png',
-            width: 25,
-            height: 25,
-          ),
-        ),
-        SizedBoxExtensions.withWidth(20),
-        IconButton(
-            onPressed: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              final authCenterProvider = Provider.of<AuthorCenterProvider>(context, listen: false);
-              authCenterProvider.clearChaptersForBook();
-              await prefs.remove('user_id');
-              print("user_id removed from SharedPreferences and chapter from author center map deleted");
-
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
-              );
-            },
-            icon: Icon(
-              Icons.login,
-              color: Colors.white,
-            )),
-        SizedBoxExtensions.withWidth(15),
-      ],
     );
   }
 
@@ -159,7 +137,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             right: 10,
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> EditProfileScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EditProfileScreen()));
               },
               child: Container(
                 decoration: BoxDecoration(
